@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
+    <title>Magical Mexico</title>
+    <!-- Enlace a la hoja de estilos CSS principal -->
+    <link href="./pages/index.css" rel="stylesheet" />
+  </head>
+
+  <body class="site">
+    <div class="site__wrapper">
+      <!-- Encabezado con logo del sitio -->
+      <header class="banner site__section">
+        <img
+          alt="Magical Mexico Logo"
+          class="banner__logo"
+          src="./images/logo-mexico.jpeg"
+        />
+      </header>
+      <main class="main-content">
+        <!-- Sección de perfil del usuario viajero -->
+        <section class="traveler-profile site__section">
+          <img class="traveler-profile__image" src="./images/X.jpg" alt="Avatar" />
+          <div class="traveler-profile__details">
+            <h1 id="traveler-profile__name">Luis Empanadas</h1>
+            <!-- Botón para editar la información del perfil -->
+            <button
+              aria-label="Edit traveler profile"
+              class="traveler-profile__edit-btn"
+              type="button"
+              id="button-edit"
+            ></button>
+            <p class="traveler-profile__bio">Dueño de Ciudad Bolillo</p>
+          </div>
+          <!-- Botón para agregar un nuevo lugar a la galería -->
+          <button
+            aria-label="Add new place"
+            class="traveler-profile__add-place-btn"
+            type="button"
+          ></button>
+        </section>
+         <!-- Sección que contiene la galería de lugares -->
+        <section class="places-gallery site__section">
+           <!-- Lista donde se insertarán dinámicamente las tarjetas de lugares -->
+          <ul class="places-gallery__list"></ul>
+        </section>
+      </main>
+      <!-- Pie de página con información de copyright -->
+      <footer class="footer site__section">
+        <p class="footer__text">© Mexico</p>
+      </footer>
+
+      <!-- Modal para editar la información del perfil de usuario -->
+      <div class="modal" id="modal-profile">
+        <div class="modal__content">
+          <!-- Botón para cerrar la ventana modal -->
+          <button
+            aria-label="Close modal"
+            class="modal__close"
+            type="button"
+          ></button>
+          <!-- Formulario para editar los datos del perfil -->
+          <h3 class="modal__title">Edit Profile</h3>
+          <form class="modal__form" id="form-new-place" novalidate>
+            <label class="modal__field">
+              <input
+                id="profile-name"
+                class="modal__input modal__input_type_title"
+                name="name"
+                placeholder="Title"
+                minlength="2"
+                maxlength="30"
+                required
+                type="text"
+              />
+              <span class="modal__error" id="profile-name-error"></span>
+            </label>
+            <label class="modal__field">
+              <input
+                id="profile-description"
+                class="modal__input modal__input_type_image-url"
+                name="image"
+                placeholder="Image URL"
+                required
+                type="url"
+              />
+              <span class="modal__error" id="profile-image-url-error"></span>
+            </label>
+            <button class="modal__button" type="submit">Edit</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal para agregar un nuevo lugar a la galería -->
+      <div class="modal" id="modal-new-place">
+        <div class="modal__content">
+          <!-- Botón para cerrar la ventana modal -->
+          <button
+            aria-label="Close modal"
+            class="modal__close"
+            type="button"
+          ></button>
+          <!-- Formulario para ingresar datos de un nuevo lugar -->
+          <h3 class="modal__title">Add New Place</h3>
+          <form class="modal__form" id="form-new-place" novalidate>
+            <label class="modal__field">
+              <input
+                id="place-title"
+                class="modal__input modal__input_type_title"
+                name="name"
+                placeholder="Title"
+                minlength="2"
+                maxlength="30"
+                required
+                type="text"
+              />
+              <span class="modal__error" id="place-title-error"></span>
+            </label>
+            <label class="modal__field">
+              <input
+                id="place-image-url"
+                class="modal__input modal__input_type_image-url"
+                name="image"
+                placeholder="Image URL"
+                required
+                type="url"
+              />
+              <span class="modal__error" id="place-image-url-error"></span>
+            </label>
+            <button class="modal__button" type="submit">Create</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal para visualizar imágenes en tamaño completo -->
+      <div class="modal" id="modal-image-view">
+        <div class="modal__content modal__box_type_image">
+          <!-- Botón para cerrar la ventana modal -->
+          <button
+            aria-label="Close modal"
+            class="modal__close"
+            type="button"
+          ></button>
+             <!-- Contenedor para la imagen ampliada y su descripción -->
+          <img alt="" class="modal__image" src="#" />
+          <p class="modal__caption"></p>
+        </div>
+      </div>
+    </div>
+
+      <!-- Template utilizado para crear nuevas tarjetas de lugares -->
+    <template id="template-place-card">
+      <li class="place-card">
+        <img class="place-card__image" src="#" alt="" />
+        <button
+          aria-label="Remove place"
+          class="place-card__delete-button"
+          type="button"
+        ></button>
+        <div class="place-card__description">
+          <h2 class="place-card__title">No se ve hasta que se monte</h2>
+          <button
+            aria-label="Like place"
+            class="place-card__like-button"
+            type="button"
+          ></button>
+        </div>
+      </li>
+    </template>
+
+  </body>
+
+  
+  <!-- Inclusión del archivo JavaScript con la funcionalidad principal -->
+  <script type="module" src="./scripts/js.js"></script>
+
+</html>
